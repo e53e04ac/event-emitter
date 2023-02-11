@@ -10,7 +10,7 @@ import { EventEmitter } from 'e53e04ac/event-emitter';
 
 ~~~~~ mermaid
 graph RL;
-  A(["e53e04ac/event-emitter"]);
+  A(["package.json"]);
   subgraph "dependencies";
     B_0(["e53e04ac/base"]);
     B_1(["e53e04ac/hold"]);
@@ -18,29 +18,36 @@ graph RL;
   subgraph "devDependencies";
     B_2(["@types/node"]);
   end;
-  A --reference--> B_0;
-  A --reference--> B_1;
-  A --reference--> B_2;
-  click B_0 "https://github.com/e53e04ac/base/tree/b4e091dbfeba0ea30c870ac7ac7877582e3fd4f0";
-  click B_1 "https://github.com/e53e04ac/hold/tree/2143f5f52192ae4156ea0af80d41c87c55355e9c";
+  A ----> B_0;
+  A ----> B_1;
+  A ----> B_2;
+  click B_0 "https://github.com/e53e04ac/base/tree/2dc903faf7859d755dd52f7fde706be5170b9a6f";
+  click B_1 "https://github.com/e53e04ac/hold/tree/285d028e225a7e75747417c3ed6b1ca0d5f52f6a";
   click B_2 "https://www.npmjs.org/package/@types/node/v/18.13.0";
 ~~~~~
 
 ~~~~~ mermaid
 graph LR;
-  subgraph "e53e04ac/event-emitter"
-    C0("index.mjs");
-    C1("index.d.ts");
+  A(["index.mjs"])
+  subgraph "base";
+    B_0_0(["Base"]);
   end;
-  subgraph "base"
-    D0(["Base"]);
+  subgraph "hold";
+    B_1_0(["hold"]);
   end;
-  subgraph "hold"
-    D1(["hold"]);
-    D2(["Get"]);
+  B_0_0 ----> A;
+  B_1_0 ----> A;
+~~~~~
+
+~~~~~ mermaid
+graph LR;
+  A(["index.d.ts"])
+  subgraph "base";
+    B_0_0(["Base"]);
   end;
-  D0 --import--> C0;
-  D1 --import--> C0;
-  D0 --import--> C1;
-  D2 --import--> C1;
+  subgraph "hold";
+    B_1_0(["Get"]);
+  end;
+  B_0_0 ----> A;
+  B_1_0 ----> A;
 ~~~~~
